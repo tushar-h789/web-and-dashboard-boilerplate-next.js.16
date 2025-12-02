@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
 import { Bell, Search, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileSidebarComponent } from "./DashboardSidebar";
@@ -13,6 +15,21 @@ export default function DashboardHeader({
   isAdmin = false,
   title = "Dashboard",
 }: DashboardHeaderProps) {
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const basePath = isAdmin ? "/admin-dashboard" : "/dashboard";
+
+  const menuItems = [
+    { label: "Profile", href: `${basePath}/profile` },
+    { label: "Settings", href: `${basePath}/settings` },
+    ...(isAdmin
+      ? [
+          { label: "Users", href: "/admin-dashboard/users" },
+          { label: "Products", href: "/admin-dashboard/products" },
+          { label: "Analytics", href: "/admin-dashboard/analytics" },
+        ]
+      : [{ label: "Reports", href: "/dashboard/reports" }]),
+  ];
+
   return (
     <header className="sticky top-0 z-40 h-16 border-b bg-background shrink-0">
       <div className="flex h-full items-center justify-between px-4 lg:px-6">
@@ -57,9 +74,40 @@ export default function DashboardHeader({
                   {isAdmin ? "Admin" : "User"}
                 </p>
               </div>
-              <Button variant="ghost" size="icon">
-                <Settings className="h-5 w-5" />
-              </Button>
+              <div className="relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  type="button"
+                  onClick={() => setIsUserMenuOpen((open) => !open)}
+                  aria-haspopup="menu"
+                  aria-expanded={isUserMenuOpen}
+                >
+                  <Settings className="h-5 w-5" />
+                </Button>
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 rounded-md border bg-popover shadow-lg z-50 py-1 text-sm">
+                    {menuItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block px-3 py-2 hover:bg-muted"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                    <div className="border-t my-1" />
+                    <button
+                      className="block w-full text-left px-3 py-2 text-destructive hover:bg-muted"
+                      type="button"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

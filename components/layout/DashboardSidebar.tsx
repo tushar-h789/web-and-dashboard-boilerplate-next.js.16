@@ -35,6 +35,7 @@ const adminDashboardLinks = [
   { href: "/admin-dashboard/products", label: "Products", icon: Package },
   { href: "/admin-dashboard/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin-dashboard/settings", label: "Settings", icon: Settings },
+  { href: "/admin-dashboard/profile", label: "Profile", icon: User },
 ];
 
 interface SidebarProps {
