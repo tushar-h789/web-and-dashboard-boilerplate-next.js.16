@@ -14,10 +14,10 @@ import { Separator } from "@/components/ui/separator";
 // Navigation links data
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/dashboard", label: "User Dashboard", icon: User },
-  { href: "/admin-dashboard", label: "Admin Dashboard", icon: Settings },
   { href: "/about-us", label: "About", icon: User },
   { href: "/contact-us", label: "Contact", icon: User },
+  { href: "/dashboard", label: "User Dashboard", icon: User },
+  { href: "/admin-dashboard", label: "Admin Dashboard", icon: Settings },
 ];
 
 // Desktop Navigation - shows on large screens
