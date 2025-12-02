@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Bell, Search, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileSidebarComponent } from "./DashboardSidebar";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 
 interface DashboardHeaderProps {
   isAdmin?: boolean;
@@ -39,8 +40,11 @@ export default function DashboardHeader({
           <h1 className="text-lg font-semibold lg:text-xl">{title}</h1>
         </div>
 
-        {/* Right: Search, Notifications, User Menu */}
+        {/* Right: Theme Toggle, Search, Notifications, User Menu */}
         <div className="flex items-center gap-2">
+          {/* Theme Toggle */}
+          <ThemeToggle />
+
           {/* Search Button (Mobile) */}
           <Button variant="ghost" size="icon" className="lg:hidden">
             <Search className="h-5 w-5" />

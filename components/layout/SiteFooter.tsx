@@ -183,7 +183,7 @@ export function MainFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background border-t flex-shrink-0 mt-auto py-10 bg-gray-100">
+    <footer className="bg-background border-t shrink-0 mt-auto py-10">
       {/* Top Section - Logo, Contact, Newsletter */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

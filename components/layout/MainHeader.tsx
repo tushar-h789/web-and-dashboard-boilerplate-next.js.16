@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 
 // Navigation links data
 const navLinks = [
@@ -103,6 +104,14 @@ function MobileNav({
           </div>
         </ScrollArea>
 
+        {/* Theme Toggle */}
+        <div className="pt-2 pb-2">
+          <div className="flex items-center justify-between px-3 py-2 rounded-lg border">
+            <span className="text-sm font-medium">Theme</span>
+            <ThemeToggle />
+          </div>
+        </div>
+
         {/* Auth Buttons */}
         <div className="flex gap-3 pt-2">
           <Button variant="outline" className="flex-1" asChild>
@@ -129,7 +138,7 @@ export function MainHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background shrink-0 py-2 bg-gray-100">
+    <header className="sticky top-0 z-50 w-full border-b bg-background shrink-0 py-2">
       <div className="container flex h-16 items-center justify-between">
         {/* Left: Mobile Menu + Logo */}
         <div className="flex items-center gap-4">
@@ -149,8 +158,9 @@ export function MainHeader() {
         {/* Center: Desktop Navigation */}
         <DesktopNav pathname={pathname} />
 
-        {/* Right: Auth Buttons (Desktop) */}
+        {/* Right: Theme Toggle + Auth Buttons (Desktop) */}
         <div className="hidden lg:flex items-center space-x-2">
+          <ThemeToggle />
           <Button variant="outline" asChild>
             <Link href="/login">Log In</Link>
           </Button>
@@ -159,10 +169,13 @@ export function MainHeader() {
           </Button>
         </div>
 
-        {/* Mobile: User Icon */}
-        <Button variant="ghost" size="icon" className="lg:hidden">
-          <User className="h-5 w-5" />
-        </Button>
+        {/* Mobile: Theme Toggle + User Icon */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <Button variant="ghost" size="icon">
+            <User className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </header>
   );
