@@ -129,7 +129,7 @@ export function MainHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
+    <header className="sticky top-0 z-50 w-full border-b bg-background shrink-0 py-2 bg-gray-100">
       <div className="container flex h-16 items-center justify-between">
         {/* Left: Mobile Menu + Logo */}
         <div className="flex items-center gap-4">
